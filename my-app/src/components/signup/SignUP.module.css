@@ -1,0 +1,8 @@
+.buttons{
+    display: flex;
+    flex-direction: column;
+}
+
+.borderButton{
+    margin-top: 25px;
+}
