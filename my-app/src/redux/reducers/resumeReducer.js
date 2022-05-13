@@ -30,12 +30,15 @@ let initialState = {
   },
 };
 
-const resumeReducer = (state = initialState, action) => {
+const resumeReducer = (action, state = initialState) => {
   switch (action.type) {
     case "SET_DATA":
       return {
+        ...state,
         resumeInfo: action.payload,
       };
+    case "GET_DATA":
+      return state;
     default:
       return state;
   }

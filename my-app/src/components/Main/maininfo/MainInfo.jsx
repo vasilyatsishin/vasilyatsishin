@@ -1,9 +1,11 @@
 import styles from "./MainInfo.module.css";
 import { useSelector } from "react-redux";
 import selectors from "../../../redux/selectors/selectors";
+import resumeReducer from "../../../redux/reducers/resumeReducer";
+import { actions } from "../../../redux/actions/actions";
 
 const MainInfo = () => {
-  const data = useSelector(selectors.getData);
+  const data = resumeReducer(actions.getData)
   return (
     <>
       <h1>Резюме</h1>
@@ -13,7 +15,7 @@ const MainInfo = () => {
           <p>Яцишин Василь</p>
           <br></br>
           <p>
-            Бажана посада:<span>{data.desiredPosition}</span>
+            Бажана посада:<span>{data.resumeInfo.desiredPosition}</span>
           </p>
           <p>
             Бажаний рівень доходу: <span></span>

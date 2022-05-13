@@ -1,5 +1,7 @@
 export const actions = {
-    setData: (data) => {
+    setData: (data) => 
         ({type: "SET_DATA", payload: data})
-    }
+    ,
+    getData: () => 
+        ({type: "GET_DATA"})
 }
