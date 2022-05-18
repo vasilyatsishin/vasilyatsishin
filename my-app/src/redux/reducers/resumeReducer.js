@@ -1,4 +1,4 @@
-let initialState = {
+const initialState = {
   resumeInfo: {
     desiredPosition: "програміст-стажер(Trainee)",
     desiredEarning: "5.000 грн.",
@@ -23,24 +23,22 @@ let initialState = {
     ],
     anotherInfo: [
       {
-        header: "Знання іноземних мов: ",
+        header: "Знання мов: ",
         data: "українська, англійська, російська",
       },
     ],
   },
 };
 
-const resumeReducer = (action, state = initialState) => {
+const resumeReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_DATA":
+    case "SET_RESUME_INFO":
       return {
         ...state,
         resumeInfo: action.payload,
       };
-    case "GET_DATA":
-      return state;
-    default:
-      return state;
+      default:
+        return state
   }
 };
 

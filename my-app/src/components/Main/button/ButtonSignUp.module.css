@@ -1,0 +1,15 @@
+.navlink{
+    display: flex;
+    align-items: center;
+    width: 300px;
+    color: white;
+    border-radius: 6px;
+    height: 36px;
+    justify-content: center;
+    background-color: #3498ff;
+}
+
+.navlink:hover{
+    text-decoration: none;
+    color: white;
+}

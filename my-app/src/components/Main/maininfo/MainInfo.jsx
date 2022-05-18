@@ -1,11 +1,15 @@
 import styles from "./MainInfo.module.css";
 import { useSelector } from "react-redux";
-import selectors from "../../../redux/selectors/selectors";
-import resumeReducer from "../../../redux/reducers/resumeReducer";
-import { actions } from "../../../redux/actions/actions";
 
 const MainInfo = () => {
-  const data = resumeReducer(actions.getData)
+  const data = useSelector((state) => state.resumeReducer.resumeInfo)
+  const contactInfo = data.contactInfo.map((e) => {
+    return (
+      <>
+        <p>{e.header}{e.data}</p>
+      </>
+    )
+  })
   return (
     <>
       <h1>Резюме</h1>
@@ -15,22 +19,22 @@ const MainInfo = () => {
           <p>Яцишин Василь</p>
           <br></br>
           <p>
-            Бажана посада:<span>{data.resumeInfo.desiredPosition}</span>
+            Бажана посада: <span>{data.desiredPosition}</span>
           </p>
           <p>
-            Бажаний рівень доходу: <span></span>
+            Бажаний рівень доходу: <span>{data.desiredEarning}</span>
           </p>
           <br></br>
           <p>
-            Дата народження: <span></span>
+            Дата народження: <span>{data.dateOfBirth}</span>
           </p>
           <p>
-            Місце проживання: <span></span>
+            Місце проживання: <span>{data.placeOfResidence}</span>
           </p>
           <p>Готовий до відряджень. Не готовий до переїзду</p>
           <br></br>
-          <p>Контактна інформація:</p>
-          <div></div>
+          <p>Контактна інформація: </p>
+          <div>{contactInfo}</div>
         </div>
       </div>
     </>

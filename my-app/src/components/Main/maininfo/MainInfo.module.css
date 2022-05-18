@@ -1,11 +1,16 @@
 .wrapper{
     width: 100%;
-    height: 215px;
     display: flex;
+}
+
+h1{
+    margin-bottom: 35px;
+    text-align: center;
 }
 
 p{
     margin: 0;
+    font-weight: bold;
 }
 
 img{
@@ -13,3 +18,4 @@ img{
     height: 215px;
     margin-right: 20px;
 }
+
