@@ -1,16 +1,23 @@
-import { useEffect } from "react"
-import { useSelector } from "react-redux"
 import Edit from "./edit/Edit";
-import styles from "./Admin.module.css"
+import styles from "./Admin.module.css";
+import { CSSTransition } from "react-transition-group";
+import { useState } from "react";
+import "./animations.css";
 
 const Admin = () => {
-    const select = useSelector((state) => state.registrationReducer.data)
-    return(
-        <div className={styles.wrapper}>
-            <h1>Hello</h1>
-            <Edit />
-        </div>
-    )
-} 
+  const [isOpen, setIsOpen] = useState(false);
 
-export default Admin
+  return (
+    <div className={styles.wrapper}>
+      <h1>Змінити резюме</h1>
+      <Edit isOpen={isOpen} setIsOpen={setIsOpen} />
+      <CSSTransition in={isOpen} timeout={500} classNames="alert" unmountOnExit>
+        <div className="chel">
+          <p>Зміни прийняті</p>
+        </div>
+      </CSSTransition>
+    </div>
+  );
+};
+
+export default Admin;

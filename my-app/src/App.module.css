@@ -1,5 +1,9 @@
 .App{
-    margin: 50px 100px;
     display: flex;
     justify-content: center;
+    margin-top: 50px;
+}
+
+textarea{
+    resize: none;
 }

@@ -1,0 +1,18 @@
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.p, .divForInput{
+    font-size: 20px;
+    text-align: center;
+    width: 50%;
+    margin: 7.5px 0;
+}
+
+.p{
+  text-align: left;
+}
+
+
