@@ -1,11 +1,13 @@
 import { useState } from "react"
-import { Navigate } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom"
 
-const ProtectedRoute = () => {
-    const [isAuth, setIsAuth] = useState(false)
+const ProtectedRoute = ({isAuth, children}) => {
+    console.log(isAuth)
     return(
         <>
-            {isAuth === false ? <Navigate to="/login" /> : console.log("auth")}
+            { !isAuth
+                ? <Navigate to="/login" />
+                : children}
         </>
     )
 }

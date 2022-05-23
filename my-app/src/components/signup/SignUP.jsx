@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { actions } from "../../redux/actions";
 import { useState } from "react";
 
-const SignUP = () => {
+const SignUP = ({setIsAuth}) => {
   const [data, setData] = useState({
     username: "",
     password: "",
@@ -14,6 +14,7 @@ const SignUP = () => {
   });
   const dispatch = useDispatch();
   const submit = () => {
+      setIsAuth(true)
       dispatch(actions.SET_USER_DATA(data));
   }
 
