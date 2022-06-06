@@ -5,8 +5,8 @@ import SignUP from "./signup/SignUP";
 import Admin from "./admin/Admin";
 import { useState } from "react";
 import { AdminMediumRoute, PrivateMediumRoute } from "./AdminRoute";
-import MainNavbar from "./navbar/MainNavbar";
-
+import { useState } from "react";
+import { AdminMediumRoute, PrivateMediumRoute } from "./AdminRoute";
 const Resume = () => {
   const [isAuth, setIsAuth] = useState(false);
   return (
