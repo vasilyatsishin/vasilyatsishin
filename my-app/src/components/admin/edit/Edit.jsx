@@ -42,7 +42,8 @@ const Edit = ({ isOpen, setIsOpen }) => {
 
   const knowledgesSkills =
     newData?.knowledgesSkills &&
-    newData.knowledgesSkills.map((e) => {
+    newData.knowledgesSkills.map((e, index) => {
+        {newData?.knowledgesSkills && console.log(newData?.knowledgesSkills)}
       return (
         <Input
           as="textarea"
@@ -50,13 +51,12 @@ const Edit = ({ isOpen, setIsOpen }) => {
           rows={4}
           style={{ resize: "none", marginBottom: "15px", marginTop: "7.5px" }}
           onChange={(data) => {
+              let knowledge = [...newData.knowledgesSkills];
+              knowledge.splice(index,1, {data})
             setNewData({
               ...newData,
               knowledgesSkills: [
-                ...knowledgesSkills,
-                {
-                  data: data,
-                },
+                ...knowledge,
               ],
             });
           }}
@@ -74,6 +74,7 @@ const Edit = ({ isOpen, setIsOpen }) => {
           rows={1}
           style={{ resize: "none", marginBottom: "15px", marginTop: "0" }}
           onChange={(data) => {
+
             setNewData({
               ...newData,
               education: [
