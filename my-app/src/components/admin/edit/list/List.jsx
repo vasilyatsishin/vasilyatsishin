@@ -1,6 +1,6 @@
-import styles from "./List.module.css"
+import styles from "./List.module.css";
 
-const List = ({header, data}) => {
+const List = ({ header, data }) => {
   return (
     <>
       <div className={styles.wrapper}>
@@ -11,4 +11,4 @@ const List = ({header, data}) => {
   );
 };
 
-export default List
+export default List;

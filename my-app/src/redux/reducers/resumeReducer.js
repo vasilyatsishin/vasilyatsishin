@@ -1,5 +1,6 @@
 const initialState = {
   resumeInfo: {
+    name: "Яцишин Василь",
     desiredPosition: "програміст-стажер(Trainee)",
     desiredEarning: "5.000 грн.",
     dateOfBirth: "31.03.2006",
@@ -37,8 +38,8 @@ const resumeReducer = (state = initialState, action) => {
         ...state,
         resumeInfo: action.payload,
       };
-      default:
-        return state
+    default:
+      return state;
   }
 };
 

@@ -1,5 +1,5 @@
 import MainInfo from "./maininfo/MainInfo";
-import NextInfo from "./nextinfo/NextInfo"
+import NextInfo from "./nextinfo/NextInfo";
 
 const Main = () => {
   return (

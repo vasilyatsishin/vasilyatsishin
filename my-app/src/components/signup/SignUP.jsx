@@ -5,8 +5,9 @@ import ButtonSignUp from "../Main/button/ButtonSignUp";
 import { useDispatch } from "react-redux";
 import { actions } from "../../redux/actions";
 import { useState } from "react";
+import { addInfo } from "../../firebase/firebaseCalls";
 
-const SignUP = () => {
+const SignUP = ({ setIsAuth }) => {
   const [data, setData] = useState({
     username: "",
     password: "",
@@ -14,8 +15,10 @@ const SignUP = () => {
   });
   const dispatch = useDispatch();
   const submit = () => {
-      dispatch(actions.SET_USER_DATA(data));
-  }
+    setIsAuth(true);
+    dispatch(actions.SET_USER_DATA(data));
+    addInfo(data, "usersInfo");
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -52,11 +55,7 @@ const SignUP = () => {
         </Form.Group>
         <Form.Group>
           <ButtonToolbar className={styles.buttons}>
-            <ButtonSignUp
-              text="Sign UP"
-              path="/admin"
-              func={submit}
-            />
+            <ButtonSignUp text="Sign UP" path="/admin" func={submit} />
             <Button
               appearance="default"
               style={{ marginLeft: "0" }}

@@ -1,33 +1,44 @@
 import ButtonSignUp from "../button/ButtonSignUp";
 import styles from "./NextInfo.module.css";
-import { useSelector } from "react-redux";
+import { getInfo } from "../../../firebase/firebaseCalls";
+import { useState } from "react";
 
 const NextInfo = () => {
-  const data = useSelector((state) => state.resumeReducer.resumeInfo)
-  const skills = data.knowledgesSkills.map((e) => {
-    return (
-      <>
-        <li>{e.data}</li>
-      </>
-    )
-  })
+  const [store, setStore] = useState();
+  const data = getInfo(setStore, "dataFinalProject");
 
-  const education = data.education.map((e) => {
-    return (
-      <>
-        <li>{e.data}</li>
-      </>
-    )
-  })
+  const skills =
+    store?.knowledgesSkills &&
+    store?.knowledgesSkills.map((e) => {
+      return (
+        <>
+          <li>{e.data}</li>
+        </>
+      );
+    });
 
-  const anotherInfo = data.anotherInfo.map((e) => {
-    return (
-      <>
-        <li>{e.header}{e.data}</li>
-      </>
-    )
-  })
+  const education =
+    store?.education &&
+    store?.education.map((e) => {
+      return (
+        <>
+          <li>{e.data}</li>
+        </>
+      );
+    });
 
+  const anotherInfo =
+    store?.anotherInfo &&
+    store?.anotherInfo.map((e) => {
+      return (
+        <>
+          <li>
+            {e.header}
+            {e.data}
+          </li>
+        </>
+      );
+    });
   return (
     <>
       <div className={styles.wrapper}>
@@ -35,7 +46,7 @@ const NextInfo = () => {
         <ul>{skills}</ul>
         <br />
         <p className={styles.p}>
-          Досвід роботи: <span>{data.experience}</span>
+          Досвід роботи: <span>{data?.experience}</span>
         </p>
         <br></br>
         <p>Освіта:</p>
@@ -44,9 +55,8 @@ const NextInfo = () => {
         <p>Додаткова інформація:</p>
         <ul>{anotherInfo}</ul>
       </div>
-      <div className=
-      {styles.buttonWrapper}>
-        <ButtonSignUp text={"Sign UP"} path={"/login"}/>
+      <div className={styles.buttonWrapper}>
+        <ButtonSignUp text={"Change Resume"} path={"/login"} />
       </div>
     </>
   );

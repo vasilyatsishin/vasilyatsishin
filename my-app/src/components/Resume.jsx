@@ -1,21 +1,40 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {BrowserRouter, Route, Routes}  from "react-router-dom";
 import Main from "./Main/Main";
 import styles from "./Resume.module.css";
 import SignUP from "./signup/SignUP";
 import Admin from "./admin/Admin";
-import ProtectedRoute from "./ProtectedRoute";
 import { useState } from "react";
+import { AdminMediumRoute, PrivateMediumRoute } from "./AdminRoute";
+import MainNavbar from "./navbar/MainNavbar";
+
 const Resume = () => {
-  const [isAuth, setIsAuth] = useState(false)
+  const [isAuth, setIsAuth] = useState(false);
   return (
     <div className={styles.wrapper}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route element={<ProtectedRoute isAuth={isAuth} setIsAuth={setIsAuth}/>}>
-            <Route path="/admin" element={<Admin />} />
-          </Route>
-          <Route path="/login" element={<SignUP isAuth={isAuth} setIsAuth={setIsAuth}/>} />
+          <Route
+            path="/admin"
+            element={
+              <PrivateMediumRoute
+                Component={Admin}
+                redirectPath={"/login"}
+                isAuth={isAuth}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <AdminMediumRoute
+                Component={SignUP}
+                redirectPath={"/admin"}
+                isAuth={isAuth}
+                setIsAuth={setIsAuth}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>
