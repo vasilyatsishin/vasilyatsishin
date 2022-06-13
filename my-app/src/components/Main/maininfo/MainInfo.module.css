@@ -1,0 +1,21 @@
+.wrapper{
+    width: 100%;
+    display: flex;
+}
+
+h1{
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+p{
+    margin: 0;
+    font-weight: bold;
+}
+
+img{
+    width: 150px;
+    height: 215px;
+    margin-right: 20px;
+}
+

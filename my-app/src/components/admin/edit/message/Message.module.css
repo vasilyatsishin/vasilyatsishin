@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+}
+
+.icon{
+    font-size: 25px;
+    width: 33%;
+    text-align: right;
+}
+
+.p, .input{
+    font-size: 20px;
+    width: 50%;
+    text-align: center;
+}
+
+.p{
+  text-align: left;
+}
+
