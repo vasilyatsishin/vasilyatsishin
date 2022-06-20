@@ -1,8 +1,7 @@
-.buttons{
-    display: flex;
-    flex-direction: column;
+.button{
+    width: 100%;
 }
 
-.borderButton{
-    margin-top: 25px;
+.wrapper{
+    width: 100%;
 }

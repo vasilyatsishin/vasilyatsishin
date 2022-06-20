@@ -5,8 +5,7 @@ import { useState } from "react";
 import "./animations.css";
 
 const Admin = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <div className={styles.wrapper}>
       <h1>Змінити резюме</h1>

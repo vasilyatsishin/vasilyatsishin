@@ -9,6 +9,7 @@ import db from "./firebaseConfig";
 
 export const getInfo = (setInfo, path) => {
   const collectionRef = collection(db, path);
+  console.log(1);
   onSnapshot(collectionRef, (snapshot) => {
     return setInfo(
       snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))[0]

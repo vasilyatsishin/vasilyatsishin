@@ -1,3 +1,4 @@
+
 import MainInfo from "./maininfo/MainInfo";
 import NextInfo from "./nextinfo/NextInfo";
 

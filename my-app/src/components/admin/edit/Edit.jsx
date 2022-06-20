@@ -4,6 +4,7 @@ import List from "./list/List";
 import React, { useEffect, useState } from "react";
 import ButtonSignUp from "../../Main/button/ButtonSignUp";
 import { addInfo, deleteInfo, getInfo } from "../../../firebase/firebaseCalls";
+import styles from "./Edit.module.css"
 
 const Edit = ({ isOpen, setIsOpen }) => {
 
@@ -19,20 +20,18 @@ const Edit = ({ isOpen, setIsOpen }) => {
 
   const contactInfo =
     newData?.contactInfo &&
-    newData.contactInfo.map((e) => {
+    newData.contactInfo.map((e, index) => {
       return (
         <Message
           header={e.header}
           data={e.data}
           onChange={(data) => {
+            let contactInfo = [...newData.contactInfo];
+            contactInfo.splice(index, 1, { header: e.header, data })
             setNewData({
               ...newData,
               contactInfo: [
-                ...contactInfo,
-                {
-                  header: e.header,
-                  data: data,
-                },
+                ...contactInfo
               ],
             });
           }}
@@ -42,7 +41,7 @@ const Edit = ({ isOpen, setIsOpen }) => {
 
   const knowledgesSkills =
     newData?.knowledgesSkills &&
-    newData.knowledgesSkills.map((e) => {
+    newData.knowledgesSkills.map((e, index) => {
       return (
         <Input
           as="textarea"
@@ -50,13 +49,12 @@ const Edit = ({ isOpen, setIsOpen }) => {
           rows={4}
           style={{ resize: "none", marginBottom: "15px", marginTop: "7.5px" }}
           onChange={(data) => {
+            let knowledge = [...newData.knowledgesSkills];
+            knowledge.splice(index, 1, { data })
             setNewData({
               ...newData,
               knowledgesSkills: [
-                ...knowledgesSkills,
-                {
-                  data: data,
-                },
+                ...knowledge,
               ],
             });
           }}
@@ -66,7 +64,7 @@ const Edit = ({ isOpen, setIsOpen }) => {
 
   const education =
     newData?.education &&
-    newData.education.map((e) => {
+    newData.education.map((e, index) => {
       return (
         <Input
           as="textarea"
@@ -74,13 +72,12 @@ const Edit = ({ isOpen, setIsOpen }) => {
           rows={1}
           style={{ resize: "none", marginBottom: "15px", marginTop: "0" }}
           onChange={(data) => {
+            let education = [...newData.education];
+            education.splice(index, 1, { data })
             setNewData({
               ...newData,
               education: [
-                ...education,
-                {
-                  data: data,
-                },
+                ...education
               ],
             });
           }}
@@ -90,20 +87,18 @@ const Edit = ({ isOpen, setIsOpen }) => {
 
   const anotherInfo =
     newData?.anotherInfo &&
-    newData.anotherInfo.map((e) => {
+    newData.anotherInfo.map((e, index) => {
       return (
         <Message
           header={e.header}
           data={e.data}
           onChange={(data) => {
+            let anotherInfo = [...newData.anotherInfo];
+            anotherInfo.splice(index, 1, { header: e.header, data })
             setNewData({
               ...newData,
               anotherInfo: [
                 ...anotherInfo,
-                {
-                  header: e.header,
-                  data: data,
-                },
               ],
             });
           }}
@@ -112,7 +107,7 @@ const Edit = ({ isOpen, setIsOpen }) => {
     });
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <Message
         header="Ім'я та прізвище:"
         data={newData.name}
@@ -183,10 +178,10 @@ const Edit = ({ isOpen, setIsOpen }) => {
           addInfo(newData, "dataFinalProject");
           deleteInfo("dataFinalProject", newData.id);
         }}
-        text="Save Changes"
+        text="Зберегти зміни"
         path="/"
       />
-    </>
+    </div>
   );
 };
 

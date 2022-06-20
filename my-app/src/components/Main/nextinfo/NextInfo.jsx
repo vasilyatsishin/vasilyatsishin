@@ -1,11 +1,15 @@
 import ButtonSignUp from "../button/ButtonSignUp";
 import styles from "./NextInfo.module.css";
 import { getInfo } from "../../../firebase/firebaseCalls";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NextInfo = () => {
+  const navigate = useNavigate();
   const [store, setStore] = useState();
-  const data = getInfo(setStore, "dataFinalProject");
+  useEffect(() => {
+    getInfo(setStore, "dataFinalProject");
+  }, []);
 
   const skills =
     store?.knowledgesSkills &&
@@ -46,7 +50,7 @@ const NextInfo = () => {
         <ul>{skills}</ul>
         <br />
         <p className={styles.p}>
-          Досвід роботи: <span>{data?.experience}</span>
+          Досвід роботи: <span>{store?.experience}</span>
         </p>
         <br></br>
         <p>Освіта:</p>
@@ -56,7 +60,12 @@ const NextInfo = () => {
         <ul>{anotherInfo}</ul>
       </div>
       <div className={styles.buttonWrapper}>
-        <ButtonSignUp text={"Change Resume"} path={"/login"} />
+        <ButtonSignUp
+          text={"Змінити резюме"}
+          func={() => {
+            navigate("/login", { replace: true });
+          }}
+        />
       </div>
     </>
   );

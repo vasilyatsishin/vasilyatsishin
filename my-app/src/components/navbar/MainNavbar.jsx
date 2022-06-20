@@ -1,17 +1,13 @@
 import { Nav, Navbar } from "rsuite";
+import styles from "./MainNavbar.module.css"
 
 const MainNavbar = () => {
   return (
     <>
-      <Navbar>
-        <Navbar.Brand href="#">RESUME</Navbar.Brand>
+      <Navbar className={styles.wrapper}>
+        <Navbar.Brand href="/">Головна</Navbar.Brand>
         <Nav>
-          <Nav.Item>Home</Nav.Item>
-          <Nav.Item>News</Nav.Item>
-          <Nav.Item>Products</Nav.Item>
-          <Nav.Item>Company</Nav.Item>
-          <Nav.Item>Team</Nav.Item>
-          <Nav.Item>Contact</Nav.Item>
+          <Nav.Item href="/login">Зареєструватись</Nav.Item>
         </Nav>
       </Navbar>
     </>

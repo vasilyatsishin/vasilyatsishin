@@ -1,13 +1,13 @@
 import styles from "./ButtonSignUp.module.css"
-import { NavLink } from "react-router-dom";
+import { Button } from "rsuite";
 
-const ButtonSignUp = ({ path, text, func }) => {
+const ButtonSignUp = ({ text, func }) => {
   return (
-    <>
-      <NavLink to={path} className={styles.navlink} onClick={func}>
+    <div className={styles.wrapper}>
+      <Button className={styles.navlink} onClick={func} appearance="primary">
         {text}
-      </NavLink>
-    </>
+      </Button>
+    </div>
   );
 };
 
