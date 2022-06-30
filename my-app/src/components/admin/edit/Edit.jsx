@@ -1,22 +1,21 @@
 import { Input } from "rsuite";
 import Message from "./message/Message";
 import List from "./list/List";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ButtonSignUp from "../../Main/button/ButtonSignUp";
 import { addInfo, deleteInfo, getInfo } from "../../../firebase/firebaseCalls";
 import styles from "./Edit.module.css"
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux/es/exports";
+import { useDispatch } from "react-redux";
 
-const Edit = ({ isOpen, setIsOpen }) => {
-
-  const [newData, setNewData] = useState({});
-
-  useEffect(() => {
-    getInfo(setNewData, "dataFinalProject");
-  }, []);
-
-  useEffect(() => {
-    console.log(newData);
-  }, [newData]);
+const Edit = () => {
+  const data = useSelector((state => state.resumeReducer))
+  const newObj = data.resumeInfo
+  console.log(newObj);
+  const navigate = useNavigate()
+  const [newData, setNewData] = useState(newObj);
+  const dispatch = useDispatch()
 
   const contactInfo =
     newData?.contactInfo &&
@@ -174,12 +173,11 @@ const Edit = ({ isOpen, setIsOpen }) => {
       <List header={"Освіта:"} data={education} />
       <ButtonSignUp
         func={() => {
-          setIsOpen(!isOpen);
           addInfo(newData, "dataFinalProject");
           deleteInfo("dataFinalProject", newData.id);
+          navigate("/", { replace: true });
         }}
         text="Зберегти зміни"
-        path="/"
       />
     </div>
   );

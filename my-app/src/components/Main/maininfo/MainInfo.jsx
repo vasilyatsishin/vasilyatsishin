@@ -1,11 +1,11 @@
 import styles from "./MainInfo.module.css";
 import { useEffect, useState } from "react";
-import { getInfo } from "../../../firebase/firebaseCalls";
+import { getInfo, uploadToFb } from "../../../firebase/firebaseCalls";
 
 const MainInfo = () => {
   const [store, setStore] = useState();
   const data = getInfo(setStore, "dataFinalProject");
-
+  
   const contactInfo =
     store?.contactInfo &&
     store.contactInfo.map((e) => {
@@ -22,7 +22,6 @@ const MainInfo = () => {
     <>
       <h1>Резюме</h1>
       <div className={styles.wrapper}>
-        <img src="" alt="image" />
         {store?.name && (
           <div className={styles.info}>
             <p>{store?.name}</p>

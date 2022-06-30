@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 
-export const PrivateMediumRoute = ({ Component, redirectPath, isAuth, setIsAuth}) => {
+export const PrivateMediumRoute = ({ Component, redirectPath, isAuth}) => {
     if (isAuth) {
         return <Component />
     }
@@ -11,6 +11,6 @@ export const AdminMediumRoute = ({ Component, redirectPath, isAuth, setIsAuth  }
     if (!isAuth) {
         return <Component setIsAuth={setIsAuth}/>
     }
-    setIsAuth(!isAuth)
+    // setIsAuth(!isAuth)
     return <Navigate to={redirectPath} />
 }

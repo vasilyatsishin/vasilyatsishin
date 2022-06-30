@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { forwardRef, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SignUP.module.css"
+import { actions } from "../../redux/actions";
 
 const { StringType, NumberType } = Schema.Types;
 
@@ -47,7 +48,6 @@ const SignUP = ({ setIsAuth }) => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const formRef = useRef();
-  const [formError, setFormError] = useState({});
   const [formValue, setFormValue] = useState({
     name: "",
     email: "",
@@ -59,10 +59,11 @@ const SignUP = ({ setIsAuth }) => {
       console.error("Form Error");
       return;
     } else {
-      dispatch({ type: "setV", payload: formValue });
+      console.log(formValue);
+      dispatch(actions.SET_USER_DATA(formValue));
       console.log(formValue, "Form Value");
       navigate("/admin", { replace: true });
-      setIsAuth(true);
+      setIsAuth(true)
     }
   };
 
@@ -77,7 +78,6 @@ const SignUP = ({ setIsAuth }) => {
         }}
         ref={formRef}
         onChange={setFormValue}
-        onCheck={setFormError}
         formValue={formValue}
         model={model}
       >

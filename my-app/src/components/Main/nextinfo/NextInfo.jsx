@@ -3,13 +3,20 @@ import styles from "./NextInfo.module.css";
 import { getInfo } from "../../../firebase/firebaseCalls";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { actions } from "../../../redux/actions";
+import { useDispatch } from "react-redux";
 
 const NextInfo = () => {
   const navigate = useNavigate();
-  const [store, setStore] = useState();
+  const dispatch = useDispatch()
+  const [store, setStore] = useState({});
   useEffect(() => {
     getInfo(setStore, "dataFinalProject");
   }, []);
+
+  useEffect(() => {
+    dispatch(actions.SET_RESUME_INFO(store))
+  }, [store])
 
   const skills =
     store?.knowledgesSkills &&
